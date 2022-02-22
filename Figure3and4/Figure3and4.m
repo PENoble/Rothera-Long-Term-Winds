@@ -1,6 +1,8 @@
 %% STRIP PLOTS MR
 clear all
 
+direc = 'C:\Users\pn399\OneDrive - University of Bath\Paper1\Figure code\Data\';
+
 for WindDirection = 1:2  
     % Set up figure
     gcf = figure('position',[10 10 1000 900]); 
@@ -19,9 +21,9 @@ for WindDirection = 1:2
     end
 
     %Load data
-    MR = load('C:\Users\pn399\OneDrive - University of Bath\Paper1\Figure code\MRProcessing\AllMR.mat');
+    MR = load(strcat(direc,'AllMR.mat'));
     walt = mean(MR.AllYears.MonthlyWalt,2,'omitnan');
-    WACCM = load('C:\Users\pn399\OneDrive - University of Bath\Paper1\Figure code\WACCMProcessing\Data\AllWACCMRothera.mat');
+    WACCM = load(strcat(direc,'AllWACCMRothera.mat'));
     height = WACCM.All.Data.gph_MRHeights;
     
     for type = 1:2
