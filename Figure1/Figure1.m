@@ -35,8 +35,10 @@ hold on
 
 C = nph_draw_coastline([LonBox(1) LatBox(1) ; LonBox(2) LatBox(2)],0,0,'noplot','color','k');
 for i = 1:length(C)
-    hold on; plot(C(i).Lon,C(i).Lat,'color','w','linewi',2);
-    hold on; plot(C(i).Lon,C(i).Lat,'color','k','linewi',1.5);
+    if length(C(i).Lon) > 100
+        hold on; plot(C(i).Lon,C(i).Lat,'color','w','linewi',2);
+        hold on; plot(C(i).Lon,C(i).Lat,'color','k','linewi',1.5);
+    end
 end
 
 plot(rothera_lon,rothera_lat,'r.','MarkerSize',10);
