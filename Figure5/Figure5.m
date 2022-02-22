@@ -1,6 +1,8 @@
 %% This code makes line plots of interdecile range of monthly wind values.
 clear all
 
+direc = 'C:\Users\pn399\OneDrive - University of Bath\Paper1\Figure code\Data\;
+
 %% set up figure
 gcf = figure();
 set(gcf,'color','w','position',[50 50 1000 375]);
@@ -15,9 +17,9 @@ rows = 1; cols = 2;
 subplot = @(rows,cols,p) subtightplot (rows,cols,p,[vert_gap horz_gap],[lower_marg upper_marg],[left_marg right_marg]);
 
 % Load data
-MR = load('C:\Users\pn399\OneDrive - University of Bath\Paper1\Figure code\MRProcessing\AllMR.mat');
+MR = load(strcat(direc,'AllMR.mat'))
 walt = mean(MR.AllYears.MonthlyWalt,2,'omitnan');
-WACCM = load('C:\Users\pn399\OneDrive - University of Bath\Paper1\Figure code\WACCMProcessing\Data\AllWACCMRothera.mat');
+WACCM = load(strcat(direc,'AllWACCMRothera.mat'));
 height = WACCM.All.Data.gph_MRHeights;
 
 % Loop over direction, height and type
