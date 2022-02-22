@@ -1,7 +1,6 @@
 %% STRIP PLOTS MR
 clear all
-data_dir = 'C:\Users\pn399\OneDrive - University of Bath\Paper1\Figure code\Figure3and4\';
- 
+
 for WindDirection = 1:2  
     % Set up figure
     gcf = figure('position',[10 10 1000 900]); 
@@ -20,9 +19,9 @@ for WindDirection = 1:2
     end
 
     %Load data
-    MR = load('MR.mat');
+    MR = load('C:\Users\pn399\OneDrive - University of Bath\Paper1\Figure code\MRProcessing\AllMR.mat');
     walt = mean(MR.AllYears.MonthlyWalt,2,'omitnan');
-    WACCM = open('C:\Users\pn399\OneDrive - University of Bath\MATLAB\ChihokoModel\Processed Data\AllModelRotheraBoxHeight.mat');
+    WACCM = load('C:\Users\pn399\OneDrive - University of Bath\Paper1\Figure code\WACCMProcessing\Data\AllWACCMRothera.mat');
     height = WACCM.All.Data.gph_MRHeights;
     
     for type = 1:2
