@@ -3,7 +3,7 @@ clear all;
 
 %% Load data
 % UTGW ave year
-load('C:\Users\pn399\OneDrive - University of Bath\Paper1\Figure code\WACCMProcessing\UTGW\UTGW_AllYears.mat')
+load('C:\Users\pn399\OneDrive - University of Bath\Paper1\Figure code\Data\UTGW_AllYears.mat')
 UTGW_ave = UTGW.CompYear;
 MRHeights = UTGW.MRHeights;
 
