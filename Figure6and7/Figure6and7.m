@@ -1,6 +1,6 @@
 %% One plot of wind results
 clear all;
-load('C:\Users\pn399\OneDrive - University of Bath\MATLAB\LinearRegressionResults_GPH.mat');
+load('C:\Users\pn399\OneDrive - University of Bath\Paper1\Figure code\Figure6and7\LinearRegressionResults.mat');
 
 
 for direction = 1:2 % 1 is zonal, 2 meridional
@@ -148,12 +148,12 @@ for direction = 1:2 % 1 is zonal, 2 meridional
                     switch direction
                         case 1
                         switch type
-                            case 1; title('MR','fontsize',15);
+                            case 1; title('Meteor radar','fontsize',15);
                             case 2; title('WACCM-X','fontsize',15);
                         end
                         case 2
                         switch type
-                            case 1; title('MR','fontsize',15);
+                            case 1; title('Meteor radar','fontsize',15);
                             case 2; title('WACCM-X','fontsize',15);
                         end
                     end
