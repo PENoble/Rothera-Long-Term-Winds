@@ -6,6 +6,9 @@
 % 28th Sept 2021 - added to process GW tendencies in the regression too c
 clear all;
 
+in_dir = 'C:\Users\pn399\OneDrive - University of Bath\Paper1\Figure code\';
+output_dir = 'C:\Users\pn399\OneDrive - University of Bath\Paper1\Figure code\Figure6and7\';
+
 % Settings
 save1 = 1; % 1 to save 
 
@@ -24,14 +27,13 @@ RegressionResults.MR.U = struct;
 RegressionResults.MR.V = struct;
 RegressionResults.WACCM.U = struct;
 RegressionResults.WACCM.V = struct;
-output_dir = 'C:\Users\pn399\OneDrive - University of Bath\Paper1\Figure code\Figure6and7\';
 
 %% Indices
 list = {'SOLAR','ENSO','QBO10','QBO30','SAM'};
-list_label = {'per \alpha sfu','per \alpha °C','per \alpha m/s','per \alpha m/s','per \alpha hPa'};
+list_label = {'per \alpha sfu','per \alpha Â°C','per \alpha m/s','per \alpha m/s','per \alpha hPa'};
 
 % Load the indices
-load('C:\Users\pn399\OneDrive - University of Bath\Paper1\Figure code\Figure2\Indices.mat');
+load(strcat(in_dir, 'Figure2\Indices.mat'));
 
 %Note these indices start in 1980 - so we remove the first bit
 f107 = indices.f107((start_yr-1980)*12+1:end-(2021-end_yr)*12)';
@@ -49,7 +51,7 @@ for input_data = 1:2 % 1 = MR, 2 = WACCM
             % Loading necessary data for direction and source
             case 1
                 % Load MR data
-                MR = load('C:\Users\pn399\OneDrive - University of Bath\Paper1\Figure code\MRProcessing\AllMR.mat');
+                MR = load(strcat(in_dir, 'Data\AllMR.mat'));
                 walt = mean(MR.AllYears.MonthlyWalt,2,'omitnan');
 
                 switch direction
@@ -59,13 +61,13 @@ for input_data = 1:2 % 1 = MR, 2 = WACCM
                 end
             case 2
                 % Load WACCM data
-                WACCM = load('C:\Users\pn399\OneDrive - University of Bath\Paper1\Figure code\WACCMProcessing\Data\AllWACCMRothera.mat');
+                WACCM = load(strcat(in_dir,'Data\AllWACCMRothera.mat'));
                 walt = WACCM.All.Data.MRHeights;
 
                 switch direction
                     case 1; U = WACCM.All.Data.MonthlyMedU(:,(start_yr-1980)*12+1:end-12*(2017-end_yr));
                     case 2; U = WACCM.All.Data.MonthlyMedV(:,(start_yr-1980)*12+1:end-12*(2017-end_yr));
-                    case 3; load('C:\Users\pn399\OneDrive - University of Bath\Paper1\Figure code\WACCMProcessing\UTGW\UTGW_AllYears.mat');
+                    case 3; load(strcat(in_dir,'Data\UTGW_AllYears.mat');
                             U = UTGW.AllYears';
                 end
                 
