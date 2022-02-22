@@ -3,12 +3,12 @@ clear all;
 
 %% Load data
 % UTGW ave year
-load('C:\Users\pn399\OneDrive - University of Bath\MATLAB\ChihokoModel\UTGW_AllYears.mat')
+load('C:\Users\pn399\OneDrive - University of Bath\Paper1\Figure code\WACCMProcessing\UTGW\UTGW_AllYears.mat')
 UTGW_ave = UTGW.CompYear;
 MRHeights = UTGW.MRHeights;
 
 % Linear regression results
-load('C:\Users\pn399\OneDrive - University of Bath\MATLAB\LinearRegressionResults.mat');
+load('C:\Users\pn399\OneDrive - University of Bath\Paper1\Figure code\Figure6and7\LinearRegressionResults.mat');
 Results = RegressionResults.WACCM.UTGW;
 
 
