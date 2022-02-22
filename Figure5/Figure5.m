@@ -14,6 +14,12 @@ rows = 1; cols = 2;
 
 subplot = @(rows,cols,p) subtightplot (rows,cols,p,[vert_gap horz_gap],[lower_marg upper_marg],[left_marg right_marg]);
 
+% Load data
+MR = load('C:\Users\pn399\OneDrive - University of Bath\Paper1\Figure code\MRProcessing\AllMR.mat');
+walt = mean(MR.AllYears.MonthlyWalt,2,'omitnan');
+WACCM = load('C:\Users\pn399\OneDrive - University of Bath\Paper1\Figure code\WACCMProcessing\Data\AllWACCMRothera.mat');
+height = WACCM.All.Data.gph_MRHeights;
+
 % Loop over direction, height and type
 for direction = 1:2 % 1 is U, 2 is V
     subplot(1,2,direction);
@@ -30,14 +36,13 @@ for direction = 1:2 % 1 is U, 2 is V
 
             switch type
                 case 1 
-                    MR = load('C:\Users\pn399\OneDrive - University of Bath\MATLAB\MeteorRadar\rothera-sk\matlab\hwd\AllYears.mat');
                     old_heights = MR.AllYears.MonthlyWalt;
                     switch direction
                         case 1; wind = MR.AllYears.MonthlyMedU;
                         case 2; wind = MR.AllYears.MonthlyMedV;
                     end            
             
-                case 2; WACCM = load('C:\Users\pn399\OneDrive - University of Bath\MATLAB\ChihokoModel\Processed Data\AllModelRotheraBoxHeight.mat','All');
+                case 2; 
                     old_heights = repmat(WACCM.All.Data.MRHeights, [1,156]);
                     switch direction
                         case 1; wind = WACCM.All.Data.MonthlyMedU(:,12*25+1:end);
@@ -45,9 +50,6 @@ for direction = 1:2 % 1 is U, 2 is V
                     end            
             end
 
-
-
-            
             new_heights = 75:105;
             new_wind = zeros(size(new_heights,2),size(wind,2));
 
@@ -74,8 +76,6 @@ for direction = 1:2 % 1 is U, 2 is V
             interdecile_range = [interdecile_range, interdecile_range, interdecile_range];
             
 
-
-            
             switch type
                 case 1; lineColor = 'r';
                 case 2; lineColor = 'b';
@@ -97,7 +97,7 @@ for direction = 1:2 % 1 is U, 2 is V
     end
     switch direction
         case 1; ylabel('Interdecile range (ms^{-1})');
-        case 2; legend({'MR 85km','MR 95km','WACCM 85km','WACCM 95km'},'Location','northeast','NumColumns',1);
+        case 2; legend({'Meteor radar 85km','Meteor radar 95km','WACCM-X 85km','WACCM-X 95km'},'Location','northeast','NumColumns',1);
     end
     xlabel('Month');
 end
